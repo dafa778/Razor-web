@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Up FF & ML</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://files.catbox.moe/gfd8xu.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 20px;
+      max-width: 400px;
+    }
+    input, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: #00ffcc;
+      color: black;
+      font-weight: bold;
+    }
+    #listOrder {
+      margin-top: 30px;
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body><audio autoplay loop>
+  <source src="https://www.myinstants.com/media/sounds/kata-mantan.mp3" type="audio/mpeg">
+</audio><div class="container">
+  <h2>🔥 Order Top Up FF / ML 🔥</h2>
+  <form id="orderForm">
+    <select id="game">
+      <option>Free Fire</option>
+      <option>Mobile Legends</option>
+    </select>
+    <input type="text" id="idGame" placeholder="Masukkan ID Game" required>
+    <input type="text" id="zone" placeholder="Zone (ML Only)" required>
+    <input type="text" id="nominal" placeholder="Nominal Top Up" required>
+    <input type="text" id="nama" placeholder="Nama Kamu" required>
+    <button type="button" onclick="kirimOrder()">Order Sekarang</button>
+  </form>  <div id="listOrder">
+    <h3>📋 Riwayat Order:</h3>
+    <ul id="riwayatOrder"></ul>
+  </div>
+</div><script>
+  function kirimOrder() {
+    const game = document.getElementById("game").value;
+    const id = document.getElementById("idGame").value;
+    const zone = document.getElementById("zone").value;
+    const nominal = document.getElementById("nominal").value;
+    const nama = document.getElementById("nama").value;
+
+    const adminWA = "6283838286725"; // Ganti dengan nomor admin kamu
+
+    const pesan = `Halo Admin, saya mau top up:
+Game: ${game}
+ID: ${id}
+Zone: ${zone}
+Nominal: ${nominal}
+Nama: ${nama}`;
+    const linkWA = `https://wa.me/${adminWA}?text=${encodeURIComponent(pesan)}`;
+    window.open(linkWA, "_blank");
+
+    // Tambah ke list order
+    const list = document.getElementById("riwayatOrder");
+    const item = document.createElement("li");
+    item.textContent = `${nama} - ${game} - ${nominal}`;
+    list.appendChild(item);
